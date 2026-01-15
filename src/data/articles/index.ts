@@ -11,6 +11,8 @@ import { dataStructuresArticle } from "./data-structures";
 import { mapWeakMapArticle } from "./map-vs-weakmap";
 import { reactElementNodeArticle } from "./react-element-vs-node";
 import { jsExecutionOrderInterviewArticle } from "./js-execution-order-interview";
+import { prototypesInheritanceArticle } from "./prototypes-inheritance";
+import { polyfillsArticle } from "./polyfills";
 
 export const articles = [
   jsExecutionOrderInterviewArticle,
@@ -26,4 +28,6 @@ export const articles = [
   dataStructuresArticle,
   mapWeakMapArticle,
   reactElementNodeArticle,
+  prototypesInheritanceArticle,
+  polyfillsArticle,
 ];

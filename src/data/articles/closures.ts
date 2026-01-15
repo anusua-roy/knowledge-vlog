@@ -108,7 +108,30 @@ fn();`,
         },
       ],
     },
-
+    {
+      id: "closures-memory-leaks",
+      title: "Closures and Memory Leaks",
+      content: [
+        {
+          type: "text",
+          value:
+            "Because closures retain references to outer variables, they can prevent garbage collection if not handled carefully. This can lead to memory leaks in long-running applications.",
+        },
+        {
+          type: "list",
+          items: [
+            "Closures holding references to large objects",
+            "Event listeners not removed",
+            "Timers or intervals capturing outer scope",
+          ],
+        },
+        {
+          type: "text",
+          value:
+            "Good practice is to clean up event listeners and nullify references when they are no longer needed.",
+        },
+      ],
+    },
     {
       id: "common-use-cases",
       title: "Common Use Cases of Closures",
@@ -140,7 +163,25 @@ counter(); // 2`,
         },
       ],
     },
-
+    {
+      id: "closures-real-world",
+      title: "Closures in Real-World Applications",
+      content: [
+        {
+          type: "text",
+          value:
+            "Closures are widely used in real-world applications, especially in frontend frameworks like React, where functions often capture state and props.",
+        },
+        {
+          type: "list",
+          items: [
+            "Event handlers capturing component state",
+            "Custom hooks maintaining internal state",
+            "Memoized callbacks using closures",
+          ],
+        },
+      ],
+    },
     {
       id: "closure-in-loops",
       title: "Closures in Loops (Common Pitfall)",
