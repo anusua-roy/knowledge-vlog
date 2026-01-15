@@ -2,7 +2,7 @@ import type { Article } from "../types";
 
 export const eventLoopArticle: Article = {
   id: "event-loop",
-  title: "Understanding the JavaScript Event Loop",
+  title: "JavaScript Event Loop",
   description:
     "A practical and intuitive explanation of how JavaScript executes synchronous and asynchronous code, including call stack, task queues, and microtasks.",
 
