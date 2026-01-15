@@ -1,4 +1,5 @@
 import React from "react";
+import { Footer } from "./Footer";
 
 type LayoutProps = {
   sidebar: React.ReactNode;
@@ -8,7 +9,13 @@ type LayoutProps = {
 export function Layout({ sidebar, main }: LayoutProps) {
   return (
     <div style={styles.app}>
-      <aside style={styles.sidebar}>{sidebar}</aside>
+      {/* Sidebar column */}
+      <aside style={styles.sidebar}>
+        <div style={styles.sidebarContent}>{sidebar}</div>
+        <Footer />
+      </aside>
+
+      {/* Main content */}
       <main style={styles.main}>{main}</main>
     </div>
   );
@@ -18,14 +25,21 @@ const styles: Record<string, React.CSSProperties> = {
   app: {
     display: "grid",
     gridTemplateColumns: "260px 1fr",
-    minHeight: "100vh",
+    height: "100vh",
     fontFamily: "system-ui, sans-serif",
   },
   sidebar: {
+    display: "flex",
+    flexDirection: "column",
     borderRight: "1px solid #ddd",
+  },
+  sidebarContent: {
+    flex: 1,
+    overflowY: "auto",
     padding: "1rem",
   },
   main: {
+    overflowY: "auto",
     padding: "2rem",
   },
 };
