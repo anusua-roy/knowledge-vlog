@@ -13,6 +13,8 @@ import { reactElementNodeArticle } from "./react-element-vs-node";
 import { jsExecutionOrderInterviewArticle } from "./js-execution-order-interview";
 import { prototypesInheritanceArticle } from "./prototypes-inheritance";
 import { polyfillsArticle } from "./polyfills";
+import { memoryManagementArticle } from "./memory-management-garbage-collection";
+import { iteratorsGeneratorsArticle } from "./iterators-generators";
 
 export const articles = [
   jsExecutionOrderInterviewArticle,
@@ -30,4 +32,6 @@ export const articles = [
   reactElementNodeArticle,
   prototypesInheritanceArticle,
   polyfillsArticle,
+  memoryManagementArticle,
+  iteratorsGeneratorsArticle,
 ];

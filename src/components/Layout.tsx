@@ -12,10 +12,9 @@ export function Layout({ sidebar, main }: LayoutProps) {
 
   useEffect(() => {
     const onResize = () => {
-      setIsMobile(window.innerWidth < 768);
-      if (window.innerWidth >= 768) {
-        setShowSidebar(false); // reset on desktop
-      }
+      const mobile = window.innerWidth < 768;
+      setIsMobile(mobile);
+      if (!mobile) setShowSidebar(false);
     };
 
     window.addEventListener("resize", onResize);
@@ -27,39 +26,20 @@ export function Layout({ sidebar, main }: LayoutProps) {
       {/* Sidebar */}
       {(!isMobile || showSidebar) && (
         <aside style={styles.sidebar(isMobile)}>
-          <div style={styles.sidebarContent}>
-            {React.isValidElement(sidebar)
-              ? React.cloneElement(
-                  sidebar as React.ReactElement<{
-                    onSelect: (article: Record<string, unknown>) => void;
-                  }>,
-                  {
-                    onSelect: (article: Record<string, unknown>) => {
-                      // call original handler
-                      const element = sidebar as React.ReactElement<{
-                        onSelect: (article: Record<string, unknown>) => void;
-                      }>;
-                      element.props.onSelect(article);
-                      // then close sidebar on mobile
-                      setShowSidebar(false);
-                    },
-                  }
-                )
-              : sidebar}
-          </div>
+          <div style={styles.sidebarScroll}>{sidebar}</div>
           <Footer />
         </aside>
       )}
 
       {/* Main content */}
-      <main id="main-scroll" style={styles.main}>
+      <main style={styles.main}>
         {isMobile && (
-            <button
-              style={styles.menuButton}
-              onClick={() => setShowSidebar((prev) => !prev)}
-            >
-              ☰ Topics
-            </button>
+          <button
+            style={styles.menuButton}
+            onClick={() => setShowSidebar(true)}
+          >
+            ☰ Topics
+          </button>
         )}
         {main}
       </main>
@@ -70,7 +50,7 @@ export function Layout({ sidebar, main }: LayoutProps) {
 const styles: {
   app: (isMobile: boolean) => React.CSSProperties;
   sidebar: (isMobile: boolean) => React.CSSProperties;
-  sidebarContent: React.CSSProperties;
+  sidebarScroll: React.CSSProperties;
   main: React.CSSProperties;
   menuButton: React.CSSProperties;
 } = {
@@ -78,24 +58,25 @@ const styles: {
     display: "grid",
     gridTemplateColumns: isMobile ? "1fr" : "260px 1fr",
     height: "100vh",
-    width: "100vw",
-    fontFamily: "system-ui, sans-serif",
+    width: "100%",
+    overflow: "hidden",
   }),
 
-  sidebar: (isMobile: boolean): React.CSSProperties => ({
+  sidebar: (isMobile: boolean) => ({
     display: "flex",
     flexDirection: "column",
+    height: "100vh", // 🔴 REQUIRED
+    width: "260px",
+    background: "#f8fafc",
     borderRight: "1px solid #ddd",
     position: isMobile ? "fixed" : "relative",
     inset: isMobile ? "0 auto 0 0" : undefined,
-    width: isMobile ? "260px" : "100%",
-    background: "#f8fafc",
-    zIndex: 10,
+    zIndex: 20,
   }),
 
-  sidebarContent: {
-    flex: 1,
-    overflowY: "auto",
+  sidebarScroll: {
+    flex: 1, // 🔴 REQUIRED
+    overflowY: "auto", // 🔴 REQUIRED
     padding: "1rem",
   },
 
@@ -105,6 +86,8 @@ const styles: {
   },
 
   menuButton: {
+    position: "sticky",
+    top: "0.75rem",
     marginBottom: "1rem",
     padding: "0.5rem 0.75rem",
     fontSize: "0.9rem",
@@ -112,7 +95,6 @@ const styles: {
     background: "#f8fafc",
     color: "#0b1220",
     cursor: "pointer",
-    alignSelf: "flex-start",
-    position: "fixed",
+    zIndex: 5,
   },
 };
