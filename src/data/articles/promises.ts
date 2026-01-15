@@ -243,7 +243,35 @@ console.log("D");`,
         },
       ],
     },
-
+    {
+      id: "async-await",
+      title: "Async / Await (Promise Syntax Sugar)",
+      content: [
+        {
+          type: "text",
+          value:
+            "async and await are built on top of Promises. They do not replace promises; they provide a more readable syntax for working with them.",
+        },
+        {
+          type: "code",
+          language: "js",
+          value: `async function fetchData() {
+  try {
+    const response = await fetch("/api/data");
+    const data = await response.json();
+    console.log(data);
+  } catch (err) {
+    console.error(err);
+  }
+}`,
+        },
+        {
+          type: "text",
+          value:
+            "Under the hood, async functions return promises, and await pauses execution until the promise settles.",
+        },
+      ],
+    },
     {
       id: "common-mistakes",
       title: "Common Mistakes",
