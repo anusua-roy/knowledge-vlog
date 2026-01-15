@@ -16,7 +16,9 @@ export function Layout({ sidebar, main }: LayoutProps) {
       </aside>
 
       {/* Main content */}
-      <main style={styles.main}>{main}</main>
+      <main id="main-scroll" style={styles.main}>
+        {main}
+      </main>
     </div>
   );
 }

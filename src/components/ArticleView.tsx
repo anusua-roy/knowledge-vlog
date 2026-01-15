@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import type { Article } from "../data/types";
 import { CodeBlock } from "./CodeBlock";
 import { ArticleHeader } from "./ArticleHeader";
@@ -7,6 +8,13 @@ type Props = {
 };
 
 export function ArticleView({ article }: Props) {
+  useEffect(() => {
+    const container = document.getElementById("main-scroll");
+    if (container) {
+      container.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  }, [article.id]);
+
   return (
     <>
       <ArticleHeader article={article} />
