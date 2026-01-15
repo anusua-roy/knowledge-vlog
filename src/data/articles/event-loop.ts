@@ -50,6 +50,13 @@ export const eventLoopArticle: Article = {
             "Event Loop – coordinates execution.",
           ],
         },
+        {
+          type: "image",
+          src: `${import.meta.env.BASE_URL}images/event-loop-diagram.webp`,
+          alt: "JavaScript Event Loop components and execution flow",
+          caption:
+            "The event loop coordinates the call stack, task queues, and runtime APIs to execute JavaScript asynchronously.",
+        },
       ],
     },
 
@@ -116,6 +123,20 @@ console.log("End");`,
           type: "text",
           value:
             "The event loop always processes all microtasks before moving on to the next macrotask.",
+        },
+        {
+          type: "table",
+          headers: ["Aspect", "Macrotask", "Microtask"],
+          rows: [
+            [
+              "Examples",
+              "setTimeout, setInterval, DOM events",
+              "Promise.then, catch, finally",
+            ],
+            ["Priority", "Lower", "Higher"],
+            ["When executed", "After microtasks", "Before next macrotask"],
+            ["Use case", "Timers, UI events", "Async chaining"],
+          ],
         },
       ],
     },
@@ -197,6 +218,17 @@ B`,
           type: "text",
           value:
             "It also explains why certain performance optimizations work, such as debouncing, throttling, and breaking heavy computations into smaller tasks.",
+        },
+      ],
+    },
+    {
+      id: "interview-tip",
+      title: "Interview Tip",
+      content: [
+        {
+          type: "text",
+          value:
+            "If asked about the event loop in interviews, focus on explaining execution order using a simple example. Mention that microtasks always run before macrotasks, and avoid going too deep unless asked.",
         },
       ],
     },
