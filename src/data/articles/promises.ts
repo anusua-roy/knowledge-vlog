@@ -175,23 +175,59 @@ console.log("D");`,
         },
       ],
     },
-
     {
       id: "promise-helpers",
-      title: "Promise Utility Methods",
+      title: "Promise Utility Methods (In Detail)",
       content: [
         {
-          type: "list",
-          items: [
-            "Promise.all – waits for all promises to fulfill",
-            "Promise.race – resolves or rejects as soon as one promise settles",
-            "Promise.allSettled – waits for all promises to settle",
-            "Promise.any – resolves when the first promise fulfills",
+          type: "table",
+          headers: [
+            "Method",
+            "When it resolves",
+            "When it rejects",
+            "Use case",
           ],
+          rows: [
+            [
+              "Promise.all",
+              "When all promises resolve",
+              "If any promise rejects",
+              "Multiple dependent async calls",
+            ],
+            [
+              "Promise.allSettled",
+              "Always resolves",
+              "Never rejects",
+              "When you need results of all promises",
+            ],
+            [
+              "Promise.race",
+              "First promise settles",
+              "First promise settles",
+              "Timeouts, competing requests",
+            ],
+            [
+              "Promise.any",
+              "First promise fulfills",
+              "If all promises reject",
+              "Fallback strategies",
+            ],
+          ],
+        },
+        {
+          type: "code",
+          language: "js",
+          value: `Promise.all([
+  fetch("/api/user"),
+  fetch("/api/orders")
+]).then(([user, orders]) => {
+  console.log("Both resolved");
+}).catch(() => {
+  console.log("One failed");
+});`,
         },
       ],
     },
-
     {
       id: "comparison",
       title: "Promises vs Callbacks",

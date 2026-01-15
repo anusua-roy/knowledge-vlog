@@ -5,6 +5,11 @@ import { asyncAwaitArticle } from "./async-await";
 import { debounceThrottleArticle } from "./debounce-throttle";
 import { hoistingTDZArticle } from "./hoisting-tdz";
 import { varLetConstArticle } from "./var-let-const";
+import { bindCallApplyArticle } from "./bind-call-apply";
+import { eventDelegationArticle } from "./event-delegation";
+import { dataStructuresArticle } from "./data-structures";
+import { mapWeakMapArticle } from "./map-vs-weakmap";
+import { reactElementNodeArticle } from "./react-element-vs-node";
 
 export const articles = [
   eventLoopArticle,
@@ -14,4 +19,9 @@ export const articles = [
   debounceThrottleArticle,
   hoistingTDZArticle,
   varLetConstArticle,
+  bindCallApplyArticle,
+  eventDelegationArticle,
+  dataStructuresArticle,
+  mapWeakMapArticle,
+  reactElementNodeArticle,
 ];
