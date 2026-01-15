@@ -1,73 +1,126 @@
-# React + TypeScript + Vite
+# Knowledge Vlog
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A personal, static, data-driven knowledge base for documenting technical concepts, interview preparation, and learning notes.
 
-Currently, two official plugins are available:
+The project is intentionally simple:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+* No backend
+* No CMS
+* No database
+* Content is stored as TypeScript data objects
+* Automatically deployed via GitHub Pages on every push
 
-## React Compiler
+This allows fast content creation with minimal maintenance.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## Why this project exists
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+This repository is meant to:
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+* Capture clear explanations of technical concepts
+* Serve as a revision aid before interviews
+* Act as a long-term personal knowledge garden
+* Be publicly accessible and easy to extend
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+The focus is on clarity and correctness, not flashy UI.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+---
+
+## Tech Stack
+
+* React
+* Vite
+* TypeScript
+* GitHub Pages (static deployment)
+
+---
+
+## Project Structure
+
+```
+src/
+ ├─ components/        # UI components (stable, rarely changes)
+ ├─ data/
+ │   ├─ types.ts       # Core content schema
+ │   └─ articles/      # One file per article
+ ├─ App.tsx
+ └─ main.tsx
+
+public/
+ └─ images/            # Diagrams and visual assets
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Content Model
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+Each article is stored as a TypeScript object following a strict schema.
+
+High-level fields include:
+
+* title
+* description
+* tags
+* level (beginner / intermediate / advanced)
+* prerequisites
+* estimated reading time
+* last updated date
+* structured content blocks (text, list, code, table, image)
+
+This keeps content predictable, readable, and easy to render.
+
+---
+
+## Adding a New Article
+
+1. Create a new file inside:
+
+   ```
+   src/data/articles/
+   ```
+2. Export an `Article` object
+3. Add the export to:
+
+   ```
+   src/data/articles/index.ts
+   ```
+4. Commit and push
+
+The site deploys automatically.
+
+---
+
+## Writing Articles with LLMs
+
+A reusable prompt for generating articles that match the schema and style of this repository is included.
+
+See:
+
 ```
+PROMPT.md
+```
+
+---
+
+## Deployment
+
+The site is deployed automatically using GitHub Actions and GitHub Pages.
+
+On every push to the `main` branch:
+
+* The app is built
+* Static files are deployed
+* The live site updates
+
+No manual steps are required.
+
+---
+
+## Author
+
+Built and maintained by Anusua Roy.
+
+* GitHub: [https://github.com/anusua-roy](https://github.com/anusua-roy)
+* LinkedIn: [https://www.linkedin.com/in/anusuaroy/](https://www.linkedin.com/in/anusuaroy/)
+* Portfolio: [https://my-portfolio-anusua-roys-projects.vercel.app/](https://my-portfolio-anusua-roys-projects.vercel.app/)
