@@ -10,8 +10,10 @@ import { eventDelegationArticle } from "./event-delegation";
 import { dataStructuresArticle } from "./data-structures";
 import { mapWeakMapArticle } from "./map-vs-weakmap";
 import { reactElementNodeArticle } from "./react-element-vs-node";
+import { jsExecutionOrderInterviewArticle } from "./js-execution-order-interview";
 
 export const articles = [
+  jsExecutionOrderInterviewArticle,
   eventLoopArticle,
   closuresArticle,
   promisesArticle,
