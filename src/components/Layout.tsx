@@ -70,7 +70,7 @@ const styles: {
     position: isMobile ? "fixed" : "relative",
     inset: isMobile ? "0 auto 0 0" : undefined,
     width: isMobile ? "260px" : "100%",
-    background: "#fff",
+    background: "inherit",
     zIndex: 10,
   }),
 
@@ -90,7 +90,7 @@ const styles: {
     padding: "0.5rem 0.75rem",
     fontSize: "0.9rem",
     border: "1px solid #ccc",
-    background: "#fff",
+    background: "inherit",
     cursor: "pointer",
     alignSelf: "flex-start",
   },

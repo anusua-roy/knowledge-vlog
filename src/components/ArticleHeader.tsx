@@ -38,13 +38,13 @@ const styles: Record<string, React.CSSProperties> = {
     marginBottom: "2rem",
   },
   description: {
-    color: "#555",
+    color: "#94a3b8",
   },
   meta: {
     display: "flex",
     gap: "1rem",
     fontSize: "0.9rem",
-    color: "#666",
+    color: "#94a3b8",
     marginTop: "0.5rem",
   },
   tags: {
@@ -54,8 +54,9 @@ const styles: Record<string, React.CSSProperties> = {
     flexWrap: "wrap",
   },
   tag: {
-    background: "#eef2ff",
-    color: "#3730a3",
+    background: "inherit",
+    opacity: 0.8,
+    color: "inherit",
     padding: "0.2rem 0.5rem",
     borderRadius: "4px",
     fontSize: "0.8rem",

@@ -40,12 +40,12 @@ const styles: Record<string, React.CSSProperties> = {
     padding: "0.75rem 1rem",
     borderTop: "1px solid #ddd",
     fontSize: "0.75rem",
-    color: "#555",
+    color: "inherit",
     display: "flex",
     flexDirection: "column",
     gap: "0.35rem",
     opacity: 0.85,
-    background: "#fafafa",
+    background: "inherit",
   },
   name: {
     fontWeight: 500,
@@ -54,10 +54,10 @@ const styles: Record<string, React.CSSProperties> = {
     display: "flex",
     gap: "0.35rem",
     flexWrap: "wrap",
-    color: "#6b7280", // muted gray
+    color: "#94a3b8", // muted gray
   },
   link: {
-    color: "#4b5563",
+    color: "#94a3b8",
     textDecoration: "none",
   },
   linkHover: {
