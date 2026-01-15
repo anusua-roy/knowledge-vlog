@@ -8,22 +8,25 @@ export function Footer() {
           href="https://www.linkedin.com/in/anusuaroy/"
           target="_blank"
           rel="noreferrer"
+          style={styles.link}
         >
           LinkedIn
         </a>
-        <span>·</span>
+        <span style={styles.separator}>·</span>
         <a
           href="https://github.com/anusua-roy/"
           target="_blank"
           rel="noreferrer"
+          style={styles.link}
         >
           GitHub
         </a>
-        <span>·</span>
+        <span style={styles.separator}>·</span>
         <a
           href="https://my-portfolio-anusua-roys-projects.vercel.app/"
           target="_blank"
           rel="noreferrer"
+          style={styles.link}
         >
           Website
         </a>
@@ -41,6 +44,8 @@ const styles: Record<string, React.CSSProperties> = {
     display: "flex",
     flexDirection: "column",
     gap: "0.35rem",
+    opacity: 0.85,
+    background: "#fafafa",
   },
   name: {
     fontWeight: 500,
@@ -49,5 +54,16 @@ const styles: Record<string, React.CSSProperties> = {
     display: "flex",
     gap: "0.35rem",
     flexWrap: "wrap",
+    color: "#6b7280", // muted gray
+  },
+  link: {
+    color: "#4b5563",
+    textDecoration: "none",
+  },
+  linkHover: {
+    textDecoration: "underline",
+  },
+  separator: {
+    opacity: 0.4,
   },
 };
