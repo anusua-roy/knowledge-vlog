@@ -1,3 +1,4 @@
+import "./App.css"
 import { useState } from "react";
 import { articles } from "./data/articles";
 import type { Article } from "./data/types";

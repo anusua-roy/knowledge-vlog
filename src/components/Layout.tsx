@@ -27,7 +27,26 @@ export function Layout({ sidebar, main }: LayoutProps) {
       {/* Sidebar */}
       {(!isMobile || showSidebar) && (
         <aside style={styles.sidebar(isMobile)}>
-          <div style={styles.sidebarContent}>{sidebar}</div>
+          <div style={styles.sidebarContent}>
+            {React.isValidElement(sidebar)
+              ? React.cloneElement(
+                  sidebar as React.ReactElement<{
+                    onSelect: (article: Record<string, unknown>) => void;
+                  }>,
+                  {
+                    onSelect: (article: Record<string, unknown>) => {
+                      // call original handler
+                      const element = sidebar as React.ReactElement<{
+                        onSelect: (article: Record<string, unknown>) => void;
+                      }>;
+                      element.props.onSelect(article);
+                      // then close sidebar on mobile
+                      setShowSidebar(false);
+                    },
+                  }
+                )
+              : sidebar}
+          </div>
           <Footer />
         </aside>
       )}
@@ -35,12 +54,12 @@ export function Layout({ sidebar, main }: LayoutProps) {
       {/* Main content */}
       <main id="main-scroll" style={styles.main}>
         {isMobile && (
-          <button
-            style={styles.menuButton}
-            onClick={() => setShowSidebar((prev) => !prev)}
-          >
-            ☰ Topics
-          </button>
+            <button
+              style={styles.menuButton}
+              onClick={() => setShowSidebar((prev) => !prev)}
+            >
+              ☰ Topics
+            </button>
         )}
         {main}
       </main>
@@ -70,7 +89,7 @@ const styles: {
     position: isMobile ? "fixed" : "relative",
     inset: isMobile ? "0 auto 0 0" : undefined,
     width: isMobile ? "260px" : "100%",
-    background: "inherit",
+    background: "#f8fafc",
     zIndex: 10,
   }),
 
@@ -89,9 +108,11 @@ const styles: {
     marginBottom: "1rem",
     padding: "0.5rem 0.75rem",
     fontSize: "0.9rem",
-    border: "1px solid #ccc",
-    background: "inherit",
+    border: "1px solid #0b1220",
+    background: "#f8fafc",
+    color: "#0b1220",
     cursor: "pointer",
     alignSelf: "flex-start",
+    position: "fixed",
   },
 };

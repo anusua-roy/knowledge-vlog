@@ -18,7 +18,7 @@ export function Sidebar({ articles, activeId, onSelect }: SidebarProps) {
               ...styles.item,
               fontWeight: article.id === activeId ? "bold" : "normal",
             }}
-            onClick={() => onSelect(article)}
+            onClick={() => onSelect(article)} // ✅ SINGLE RESPONSIBILITY
           >
             {article.title}
           </li>

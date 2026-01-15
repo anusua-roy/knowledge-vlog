@@ -54,14 +54,11 @@ const styles: Record<string, React.CSSProperties> = {
     display: "flex",
     gap: "0.35rem",
     flexWrap: "wrap",
-    color: "#94a3b8", // muted gray
+    color: "#6b7280", // muted gray
   },
   link: {
-    color: "#94a3b8",
+    color: "#4b5563",
     textDecoration: "none",
-  },
-  linkHover: {
-    textDecoration: "underline",
   },
   separator: {
     opacity: 0.4,
