@@ -15,6 +15,9 @@ import { prototypesInheritanceArticle } from "./prototypes-inheritance";
 import { polyfillsArticle } from "./polyfills";
 import { memoryManagementArticle } from "./memory-management-garbage-collection";
 import { iteratorsGeneratorsArticle } from "./iterators-generators";
+import { browserRenderingArticle } from "./browser-rendering-pipelines";
+import { webPerformanceArticle } from "./web-performance-ux";
+import { frontendObservabilityArticle } from "./observality";
 
 export const articles = [
   jsExecutionOrderInterviewArticle,
@@ -34,4 +37,7 @@ export const articles = [
   polyfillsArticle,
   memoryManagementArticle,
   iteratorsGeneratorsArticle,
+  browserRenderingArticle,
+  webPerformanceArticle,
+  frontendObservabilityArticle,
 ];
