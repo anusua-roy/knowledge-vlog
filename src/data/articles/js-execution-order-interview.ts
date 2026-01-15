@@ -138,7 +138,52 @@ B`,
         },
       ],
     },
+    {
+      id: "async-await-settimeout",
+      title: "Async / Await with setTimeout",
+      content: [
+        {
+          type: "code",
+          language: "js",
+          value: `async function test() {
+  console.log("A");
 
+  setTimeout(() => {
+    console.log("B");
+  }, 0);
+
+  await Promise.resolve();
+  console.log("C");
+}
+
+console.log("D");
+test();
+console.log("E");`,
+        },
+        {
+          type: "text",
+          value: "Output:",
+        },
+        {
+          type: "code",
+          language: "js",
+          value: `D
+A
+E
+C
+B`,
+        },
+        {
+          type: "list",
+          items: [
+            "Synchronous code runs first (D, A, E)",
+            "await pauses function execution",
+            "Code after await runs as a microtask (C)",
+            "setTimeout callback is a macrotask (B)",
+          ],
+        },
+      ],
+    },
     {
       id: "multiple-promises",
       title: "Multiple Promise Chains",
@@ -347,7 +392,87 @@ let b = 20;`,
         },
       ],
     },
+    {
+      id: "nested-promises",
+      title: "Nested Promises Execution Order",
+      content: [
+        {
+          type: "code",
+          language: "js",
+          value: `Promise.resolve().then(() => {
+  console.log("A");
 
+  Promise.resolve().then(() => {
+    console.log("B");
+  });
+});
+
+Promise.resolve().then(() => {
+  console.log("C");
+});`,
+        },
+        {
+          type: "text",
+          value: "Output:",
+        },
+        {
+          type: "code",
+          language: "js",
+          value: `A
+C
+B`,
+        },
+        {
+          type: "list",
+          items: [
+            "First then callback runs (A)",
+            "Nested then is queued as a new microtask",
+            "Second top-level promise runs next (C)",
+            "Nested promise runs after (B)",
+          ],
+        },
+      ],
+    },
+    {
+      id: "promise-constructor-sync",
+      title: "Promise Constructor vs then",
+      content: [
+        {
+          type: "code",
+          language: "js",
+          value: `console.log("A");
+
+new Promise((resolve) => {
+  console.log("B");
+  resolve();
+}).then(() => {
+  console.log("C");
+});
+
+console.log("D");`,
+        },
+        {
+          type: "text",
+          value: "Output:",
+        },
+        {
+          type: "code",
+          language: "js",
+          value: `A
+B
+D
+C`,
+        },
+        {
+          type: "list",
+          items: [
+            "Promise constructor runs synchronously",
+            "then callback is always async (microtask)",
+            "Synchronous code finishes before microtasks",
+          ],
+        },
+      ],
+    },
     {
       id: "final-tip",
       title: "Interview Tip",
