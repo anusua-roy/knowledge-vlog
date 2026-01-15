@@ -27,6 +27,7 @@ const styles: Record<string, React.CSSProperties> = {
     gridTemplateColumns: "260px 1fr",
     height: "100vh",
     fontFamily: "system-ui, sans-serif",
+    width: "100vw",
   },
   sidebar: {
     display: "flex",
