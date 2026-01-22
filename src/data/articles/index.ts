@@ -18,6 +18,7 @@ import { iteratorsGeneratorsArticle } from "./iterators-generators";
 import { browserRenderingArticle } from "./browser-rendering-pipelines";
 import { webPerformanceArticle } from "./web-performance-ux";
 import { frontendObservabilityArticle } from "./observality";
+import { frontendScenarioQuestionsArticle } from "./interview-questions";
 
 export const articles = [
   jsExecutionOrderInterviewArticle,
@@ -40,4 +41,5 @@ export const articles = [
   browserRenderingArticle,
   webPerformanceArticle,
   frontendObservabilityArticle,
+  frontendScenarioQuestionsArticle,
 ];
